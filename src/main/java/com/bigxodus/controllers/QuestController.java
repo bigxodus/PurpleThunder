@@ -14,7 +14,7 @@ import java.util.List;
 public class QuestController {
 
     @RequestMapping(method = RequestMethod.GET, params={"lat", "lon"})
-    public List<Quest> getQuestsByIds(@RequestParam("lat") int lat, @RequestParam("lon") int lon) {
+    public List<Quest> getQuestsByIds(@RequestParam("lat") Double lat, @RequestParam("lon") double lon) {
         // LAT, Latitude  ;  위도 (한국에서는 북위)
         // LON, Longitude  ;  경도 (한국에서는 동경)
 
@@ -26,16 +26,16 @@ public class QuestController {
         Quest q = new Quest();
 
         q.setQuestId(1L);
-        q.setLatitude(3L);
-        q.setLongitude(7L);
+        q.setLatitude(3D);
+        q.setLongitude(7D);
         q.setTitle("스터디");
         q.setDescription("스터디를 진행한다.");
 
         Quest q1 = new Quest();
 
         q1.setQuestId(1L);
-        q1.setLatitude(3L);
-        q1.setLongitude(7L);
+        q1.setLatitude(3D);
+        q1.setLongitude(7D);
         q1.setTitle("스터디");
         q1.setDescription("스터디를 진행한다.");
 
