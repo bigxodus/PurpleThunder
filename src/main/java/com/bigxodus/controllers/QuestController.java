@@ -1,6 +1,8 @@
 package com.bigxodus.controllers;
 
 import com.bigxodus.domains.Quest;
+import com.bigxodus.repository.QuestRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/quest")
 public class QuestController {
+
+    @Autowired
+    private QuestRepository questRepository;
 
     @RequestMapping(method = RequestMethod.GET, params={"lat", "lon"})
     public List<Quest> getQuestsByIds(@RequestParam("lat") Double lat, @RequestParam("lon") double lon) {
@@ -45,14 +50,12 @@ public class QuestController {
         return quests;
     }
 
-//    @RequestMapping(method = RequestMethod.GET, params = {"lat"})
-//    public List<Quest> getQuestsByIds(@RequestParam("lat") Long lat) {
-//        // LAT, Latitude  ;  위도 (한국에서는 북위)
-//        // LON, Longitude  ;  경도 (한국에서는 동경)
-//
-//        System.out.println(lat);
-////        System.out.println(lon);
-//
-//        return null;
-//    }
+    @RequestMapping(value="/default", method = RequestMethod.GET)
+    public List<Quest> getQuestsByIds() {
+        // LAT, Latitude  ;  위도 (한국에서는 북위)
+        // LON, Longitude  ;  경도 (한국에서는 동경)
+
+        List<Quest> all = questRepository.findAll();
+        return all;
+    }
 }
