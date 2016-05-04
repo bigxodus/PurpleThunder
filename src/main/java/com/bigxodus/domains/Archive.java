@@ -20,27 +20,27 @@ public class Archive implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="archive_id", nullable=false)
-    private Long archive_id;
+    private Long archiveId;
 
     @Column(name="quest_id", nullable=false)
-    private Long quest_id;
+    private Long questId;
 
     @Column(name="user_id", nullable=false)
-    private Long user_id;
+    private Long userId;
 
     @Column(name="start_tm", nullable=true)
-    private LocalDateTime start_tm;
+    private LocalDateTime startTm;
 
     @Column(name="end_tm", nullable=true)
-    private LocalDateTime end_tm;
+    private LocalDateTime endTm;
 
     @Column(name="content", nullable=true)
     private String content;
 
     @Column(name="reg_tm", nullable=true)
-    private LocalDateTime reg_tm;
+    private LocalDateTime regTm;
 
     @Column(name="edit_tm", nullable=true)
-    private LocalDateTime edit_tm;
+    private LocalDateTime editTm;
 
 }

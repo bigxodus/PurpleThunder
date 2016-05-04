@@ -2,10 +2,11 @@ package com.bigxodus.controllers;
 
 import com.bigxodus.common.Util;
 import com.bigxodus.domains.Archive;
-import com.bigxodus.repository.ArchiveRepository;
+import com.bigxodus.services.ArchiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,19 +20,20 @@ import java.util.List;
 public class ArchiveController {
 
     @Autowired
-    private ArchiveRepository archiveRepository;
+    ArchiveService archiveService;
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public List<Archive> getArchiveByIds(@PathVariable("id") Long id) {
-        Archive archive = archiveRepository.findOne(id);
-        return Util.toList(archive);
+        List<Long> ids = new ArrayList<>();
+
+        ids.add(0L);
+        ids.add(1L);
+
+        return archiveService.getByIds(ids);
     }
 
     @RequestMapping(method=RequestMethod.GET, params={"userId"})
     public List<Archive> getArchiveByUserId(@RequestParam("userId")Long userId) {
-        List<Archive> lists = archiveRepository.findAll();
-        return lists;
+        return archiveService.getByUserId(userId);
     }
-
-
 }

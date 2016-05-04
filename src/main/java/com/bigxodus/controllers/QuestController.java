@@ -2,6 +2,7 @@ package com.bigxodus.controllers;
 
 import com.bigxodus.domains.Quest;
 import com.bigxodus.repository.QuestRepository;
+import com.bigxodus.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,7 @@ import java.util.List;
 public class QuestController {
 
     @Autowired
-    private QuestRepository questRepository;
+    QuestService questService;
 
     @RequestMapping(method = RequestMethod.GET, params={"lat", "lon"})
     public List<Quest> getQuestsByIds(@RequestParam("lat") Double lat, @RequestParam("lon") double lon) {
@@ -54,8 +55,9 @@ public class QuestController {
     public List<Quest> getQuestsByIds() {
         // LAT, Latitude  ;  위도 (한국에서는 북위)
         // LON, Longitude  ;  경도 (한국에서는 동경)
-
-        List<Quest> all = questRepository.findAll();
-        return all;
+        List<Long> ids = new ArrayList<>();
+        ids.add(0L);
+        ids.add(1L);
+        return questService.getByIds(ids);
     }
 }
