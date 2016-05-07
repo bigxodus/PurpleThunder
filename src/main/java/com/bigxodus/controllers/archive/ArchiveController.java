@@ -1,8 +1,8 @@
-package com.bigxodus.controllers;
+package com.bigxodus.controllers.archive;
 
-import com.bigxodus.common.Util;
-import com.bigxodus.domains.Archive;
-import com.bigxodus.services.ArchiveService;
+import com.bigxodus.domains.archive.Archive;
+import com.bigxodus.services.archive.ArchiveService;
+import javassist.tools.web.BadHttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +35,10 @@ public class ArchiveController {
     @RequestMapping(method=RequestMethod.GET, params={"userId"})
     public List<Archive> getArchiveByUserId(@RequestParam("userId")Long userId) {
         return archiveService.getByUserId(userId);
+    }
+
+    @RequestMapping(method=RequestMethod.POST)
+    public Archive save(@RequestBody Archive archive){
+        return archiveService.archiveQuest(archive);
     }
 }

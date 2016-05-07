@@ -1,6 +1,6 @@
-package com.bigxodus.services;
+package com.bigxodus.services.quest;
 
-import com.bigxodus.domains.Quest;
+import com.bigxodus.domains.quest.Quest;
 
 import java.util.List;
 
@@ -13,4 +13,7 @@ public interface QuestService {
 
     public Quest getById(Long id);
     public List<Quest> getByIds(List<Long> ids);
+
+    public Quest save(Quest quest);
+    public Quest update(Quest quest);
 }

@@ -1,6 +1,6 @@
 package com.bigxodus.repository;
 
-import com.bigxodus.domains.Quest;
+import com.bigxodus.domains.quest.Quest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

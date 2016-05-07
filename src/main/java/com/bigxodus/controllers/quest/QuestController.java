@@ -1,14 +1,11 @@
-package com.bigxodus.controllers;
+package com.bigxodus.controllers.quest;
 
-import com.bigxodus.domains.Quest;
-import com.bigxodus.repository.QuestRepository;
-import com.bigxodus.services.QuestService;
+import com.bigxodus.domains.quest.Quest;
+import com.bigxodus.services.quest.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +46,22 @@ public class QuestController {
         quests.add(q1);
 
         return quests;
+    }
+
+    @RequestMapping(method=RequestMethod.PUT)
+    public Quest update(@RequestBody Quest quest) {
+        Quest updatedQuest = questService.update(quest);
+        return updatedQuest;
+    }
+
+    @RequestMapping(method=RequestMethod.POST)
+    public Quest save(@RequestBody Quest quest) {
+        // validation!!
+        LocalDateTime today = LocalDateTime.now();
+        quest.setRegTm(today);
+        Quest savedQuest = questService.save(quest);
+        System.out.println(savedQuest);
+        return savedQuest;
     }
 
     @RequestMapping(value="/default", method = RequestMethod.GET)

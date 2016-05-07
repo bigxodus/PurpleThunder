@@ -1,6 +1,6 @@
 package com.bigxodus.repository;
 
-import com.bigxodus.domains.Archive;
+import com.bigxodus.domains.archive.Archive;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

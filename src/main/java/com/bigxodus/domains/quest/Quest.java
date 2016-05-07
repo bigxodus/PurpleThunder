@@ -1,4 +1,4 @@
-package com.bigxodus.domains;
+package com.bigxodus.domains.quest;
 
 import lombok.Data;
 import javax.persistence.*;

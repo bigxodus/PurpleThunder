@@ -1,4 +1,4 @@
-package com.bigxodus.domains;
+package com.bigxodus.domains.archive;
 
 import lombok.Data;
 

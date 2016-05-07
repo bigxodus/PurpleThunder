@@ -6,4 +6,7 @@ package com.bigxodus.config;
  * @note:
  */
 public class PurpleThunderConfig {
+
+
+
 }
