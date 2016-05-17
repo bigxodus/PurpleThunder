@@ -35,11 +35,6 @@ public class ArchiveServiceImpl implements ArchiveService{
     }
 
     @Override
-    public Archive save(Archive archive) {
-        return archiveRepository.save(archive);
-    }
-
-    @Override
     public Archive update(Archive archive) {
         Archive updatedArchive = archiveRepository.findOne(archive.getArchiveId());
         updatedArchive.setContent(archive.getContent());
