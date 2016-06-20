@@ -4,6 +4,8 @@ import com.bigxodus.domains.archive.Archive;
 import com.bigxodus.repository.ArchiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
  * @note:
  */
 @Service
+@Transactional(readOnly = true)
 public class ArchiveServiceImpl implements ArchiveService{
 
     @Autowired
@@ -35,6 +38,7 @@ public class ArchiveServiceImpl implements ArchiveService{
     }
 
     @Override
+    @Transactional(readOnly = false, propagation= Propagation.REQUIRED, rollbackFor={Exception.class})
     public Archive update(Archive archive) {
         Archive updatedArchive = archiveRepository.findOne(archive.getArchiveId());
         updatedArchive.setContent(archive.getContent());
@@ -43,6 +47,7 @@ public class ArchiveServiceImpl implements ArchiveService{
     }
 
     @Override
+    @Transactional(readOnly = false, propagation= Propagation.REQUIRED, rollbackFor={Exception.class})
     public Archive archiveQuest(Archive archive) {
         Archive updatedArchive = archiveRepository.findOne(archive.getArchiveId());
         updatedArchive.setContent(archive.getContent());

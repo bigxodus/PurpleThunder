@@ -4,6 +4,7 @@ import com.bigxodus.domains.quest.Quest;
 import com.bigxodus.repository.QuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ import java.util.List;
  * @note:
  */
 @Service
+@Transactional(readOnly = true)
 public class QuestServiceImpl implements QuestService {
 
     @Autowired
@@ -31,13 +33,13 @@ public class QuestServiceImpl implements QuestService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public Quest save(Quest quest) {
         return questRepository.save(quest);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public Quest update(Quest quest) {
 
         Quest updatedQuest = questRepository.findOne(quest.getQuestId());
