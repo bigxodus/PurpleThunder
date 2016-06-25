@@ -17,15 +17,5 @@ public class L7checkController {
     public String monitor() {
         return "Ok";
     }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String getTest() {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("purple-thunder");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-        return "";
-    }
 }
 

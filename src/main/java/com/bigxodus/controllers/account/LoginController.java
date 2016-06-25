@@ -19,5 +19,4 @@ public class LoginController {
     public String login(@RequestBody Login login){
         return "";
     }
-
 }

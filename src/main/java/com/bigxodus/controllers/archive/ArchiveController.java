@@ -2,7 +2,6 @@ package com.bigxodus.controllers.archive;
 
 import com.bigxodus.domains.archive.Archive;
 import com.bigxodus.services.archive.ArchiveService;
-import javassist.tools.web.BadHttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

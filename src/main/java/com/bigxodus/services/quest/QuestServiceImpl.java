@@ -41,7 +41,6 @@ public class QuestServiceImpl implements QuestService {
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
     public Quest update(Quest quest) {
-
         Quest updatedQuest = questRepository.findOne(quest.getQuestId());
 
         updatedQuest.setTitle(quest.getTitle());
